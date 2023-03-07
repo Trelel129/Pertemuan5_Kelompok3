@@ -58,8 +58,9 @@ class Client(threading.Thread):
         global Math
         global send
         while True:
+            #select client that already input
             ready = select.select([self.client], [], [], 5)
-            if ready[0]:
+            if ready[1]:
                 send = self.client.recv(self.size)
                 send = send.decode()
                 send = send+" = "+ str(eval(send))
@@ -70,6 +71,7 @@ class Client(threading.Thread):
             if Math == 0:
                 print ('recv: '+str(self.address)+str(send))
                 self.client.send(str(send).encode())
+                Math = 1
                 break
         
 

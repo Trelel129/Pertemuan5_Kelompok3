@@ -14,7 +14,7 @@ YES = 0
 
 def thread_input():
     global math 
-    math = input("Masukkan perhitungan matematika: ")
+    math = input("-> ")
 
 def thread_recv():
     global reply 
@@ -54,15 +54,6 @@ if __name__ == "__main__":
             thread1.join()
             thread2.join()
             break
-
-        # #Keyboard interrupt
-        # try:
-        #     thread1.join()
-        #     thread2.join()
-        # except KeyboardInterrupt:
-        #     print("Keyboard interrupt")
-        #     client_socket.close()
-        #     sys.exit(0)
 
     client_socket.close()
     sys.exit(0)
