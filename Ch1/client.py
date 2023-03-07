@@ -14,7 +14,7 @@ YES = 0
 
 def thread_input():
     global math 
-    math = input(">> ")
+    math = input("Masukkan perhitungan matematika: ")
 
 def thread_recv():
     global reply 
@@ -31,9 +31,8 @@ if __name__ == "__main__":
     while True:
         if math:
             # Input sudah masuk
-            # eval
-            f = eval(math)
-            msg = math + " = " + str(f)
+            # mengirim data ke server
+            msg = math
 
             # kirim data ke server
             client_socket.send(msg.encode())
@@ -50,11 +49,20 @@ if __name__ == "__main__":
                 sys.stdout.write("Pesan terkirim ke client lain. Isi pesan: " + str(reply))
                 YES = 0
             else:
-                print("Menerima pesan dari suatu client. Isi pesan: " + str(reply))
+                print("-> " + str(reply))
             client_socket.send(reply.encode())
             thread1.join()
             thread2.join()
             break
+
+        # #Keyboard interrupt
+        # try:
+        #     thread1.join()
+        #     thread2.join()
+        # except KeyboardInterrupt:
+        #     print("Keyboard interrupt")
+        #     client_socket.close()
+        #     sys.exit(0)
 
     client_socket.close()
     sys.exit(0)

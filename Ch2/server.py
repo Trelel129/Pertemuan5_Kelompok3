@@ -1,9 +1,4 @@
-import sys
 import socket
-import selectors
-import types
-
-sel = selectors.DefaultSelector()
 
 def server_program():
     # get the hostname
@@ -15,7 +10,7 @@ def server_program():
     server_socket.bind((host, port))  # bind host address and port together
 
     # configure how many client the server can listen simultaneously
-    server_socket.listen(2)
+    server_socket.listen(20)
     conn, address = server_socket.accept()  # accept new connection
     print("Connection from: " + str(address))
     while True:

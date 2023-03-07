@@ -16,7 +16,7 @@ def client_program():
         print('Received from server: ' + data)  # show in terminal
 
         message = input(" -> ")  # again take input
-
+    
     client_socket.close()  # close the connection
 
 

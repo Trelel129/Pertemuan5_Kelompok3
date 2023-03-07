@@ -61,7 +61,9 @@ class Client(threading.Thread):
             ready = select.select([self.client], [], [], 5)
             if ready[0]:
                 send = self.client.recv(self.size)
-            
+                send = send.decode()
+                send = send+" = "+ str(eval(send))
+
             if send:
                 Math = 0
 
